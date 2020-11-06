@@ -26,8 +26,6 @@ class Screen1(Screen):
                 list = data[word_alternate] #creates new list to avoid writing to the database
                 list.insert(0, "Did you mean " + word_alternate + "?")
                 self.ids.definition_list.text = str(data[word_alternate]).replace("['", " ").replace("']", "").replace("', '", "\n-")
-                print(self.ids.definition_list.text)
-                print(type(self.ids.definition_list.text))
             except KeyError:
                 self.ids.definition_list.text = "That word is not available in this dictionary. Check your spelling."
 
