@@ -8,4 +8,6 @@ Here is the screenshots of the app:
 
 [![screenshot2.png](https://i.postimg.cc/QxTfjLPG/screenshot2.png)](https://postimg.cc/SJm6GPkD)
 
+It is a bit smart as it uses difflib so when the user entered a misspelled word, it will try to find the closest match.
+
 [![screenshot3.png](https://i.postimg.cc/kXWWjWDK/screenshot3.png)](https://postimg.cc/fJT3ytcR)
