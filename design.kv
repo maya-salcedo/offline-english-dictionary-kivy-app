@@ -9,15 +9,17 @@
             Label:
                 text: "Offline English Dictionary"
                 font_size: "20sp" # sp = space-independent pixels
-                text_size: self.width, None
-                height: self.texture_size[1]
-
+                text_size: self.size #these 3 codes binds to
+                halign: 'center'     #keep the label
+                valign: 'middle'     #in the middle
             TextInput:
                 id: word_to_look
                 hint_text: "Enter a word"
+                size_hint: (1, None) #To make the height size absolute
+                height: 30           #To make the height size absolute
         GridLayout:
             cols: 2
-            size_hint: 0.2, 0.2 #it gives 20% space in the screen
+            size_hint: 0.1, 0.1 #it gives 20% space in the screen
             padding: 10, 10
             spacing: 10, 0
             Button:
@@ -32,9 +34,9 @@
                 opacity: 1 if self.state == "normal" else 0.5
                 color: 0.1, 0.7, 1, 1
                 on_press: root.clear(root.ids.word_to_look.text)
-
         GridLayout:
             cols: 1
+            size_hint: 0.6, 0.6
             padding: 15, 15 #outside of the GridLayout
             spacing: 20, 20
             ScrollView:
