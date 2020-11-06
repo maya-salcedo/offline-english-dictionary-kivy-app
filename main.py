@@ -6,11 +6,11 @@ import json
 
 Builder.load_file('design.kv') #To connect to .kv file
 
-data = json.load(open('data.json'))
 
 class Screen1(Screen):
 
     def search_definition(self, word):
+        data = json.load(open('data.json'))
         if word in data:
             self.ids.definition_list.text = str(data[word]).replace("['", "-").replace("']", "").replace("', '", "\n-")
         elif word.lower() in data:
@@ -24,10 +24,12 @@ class Screen1(Screen):
                 alternative_word = [difflib.get_close_matches(word, data, n=1)]
                 word_alternate = str(alternative_word[0]).replace("['", "").replace("']", "")
                 list = data[word_alternate] #creates new list to avoid writing to the database
-                list.insert(0, "Did you mean " + word_alternate + "?")
+                list.insert(0, "Did you mean " + '"' + word_alternate + '"' + "?")
                 self.ids.definition_list.text = str(data[word_alternate]).replace("['", " ").replace("']", "").replace("', '", "\n-")
             except KeyError:
                 self.ids.definition_list.text = "That word is not available in this dictionary. Check your spelling."
+            finally: #to clear the Label area
+                open('data.json').close()
 
 
     def clear(self, not_word):
